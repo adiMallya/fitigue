@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-import { PrivateRoute, LoginPage } from "src/features/auth";
+import { PrivateRoute, LoginPage, SignUpPage } from "src/features/auth";
 import { Home } from "src/pages";
 
 const App: React.FC = () => {
@@ -12,7 +12,8 @@ const App: React.FC = () => {
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<Home/>}/>
         </Route>
-        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage/>} />
       </Routes>
     </>
   );

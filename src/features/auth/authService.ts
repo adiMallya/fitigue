@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { AuthResponse } from 'src/shared/types';
 import { API_BASE } from 'src/utils';
+import { UserDataType } from './types';
 
 const postLoginData = async (email: string, password: string): Promise<AuthResponse> => {
     try {
@@ -16,20 +17,6 @@ const postLoginData = async (email: string, password: string): Promise<AuthRespo
         throw error;
     }
 
-}
-
-interface UserDataType {
-    firstName: string;
-    lastName: string;
-    email: string,
-    password: string,
-    username: string,
-    bio?: string,
-    sex: string,
-    age: number,
-    height: number,
-    weight: number,
-    phone?: number
 }
 
 const postSignUpData = async (userData: UserDataType): Promise<AuthResponse> => {
