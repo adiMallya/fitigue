@@ -74,7 +74,7 @@ const LoginPage = (): JSX.Element => {
         </div>
         <div className="relative dark:bg-gray-950 rounded-full h-10">
           <input
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
             className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-300 focus:ring dark:focus:ring-slate-400 placeholder:opacity-75"
             name="password"
             placeholder="Password"
@@ -90,7 +90,7 @@ const LoginPage = (): JSX.Element => {
               aria-label="Icon"
               role="button"
             >
-              {showPassword ? <Visibility/> : <VisibilityOff/>}
+              {showPassword ? <Visibility /> : <VisibilityOff />}
             </span>
           </div>
           {error ? (
@@ -115,6 +115,17 @@ const LoginPage = (): JSX.Element => {
           Fill Test Credentials
         </button>
       </form>
+      <p className="dark:text-slate-200 text-semibold" aria-label="form-footer">
+        New here ?{" "}
+        <span
+          className="underline underline-offset-4 text-cyan-600 cursor-pointer"
+          role="hyperlink"
+          aria-label="SignUp link"
+          onClick={() => navigate("/signup")}
+        >
+          Sign Up.
+        </span>
+      </p>
     </div>
   );
 };
