@@ -42,10 +42,11 @@ const LoginPage = (): JSX.Element => {
 
   useEffect(() => {
     isAuthenticated && navigate("/", { replace: true });
-  }, [isAuthenticated, navigate]);
+    dispatch({ type: "authenticate/clear" });
+  }, [isAuthenticated, navigate, dispatch]);
 
   return (
-    <div className="min-w-20 flex flex-col items-center gap-8 my-8 mx-auto py-8 px-16 dark:text-white">
+    <div className="md:max-w-xl flex flex-col items-center gap-8 my-8 mx-auto py-8 px-16 dark:text-white">
       <div className="flex flex-col items-center justify-center">
         <span aria-label="salutation" className="text-lg text-slate-400">
           Hey there,
@@ -80,7 +81,6 @@ const LoginPage = (): JSX.Element => {
             placeholder="Password"
             onChange={handleInputChange}
             value={formData.password}
-            autoFocus
             aria-label="password"
           />
           <div className="absolute bottom-3 right-6 w-5 h-5 flex items-center cursor-pointer">
