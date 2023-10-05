@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { RootState, ThunkAppDispatch } from "src/shared";
 import { login } from "../authActions";
 
@@ -41,7 +42,7 @@ const LoginPage = (): JSX.Element => {
 
   useEffect(() => {
     isAuthenticated && navigate("/", { replace: true });
-  }, [dispatch, isAuthenticated]);
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="min-w-20 flex flex-col items-center gap-8 my-8 mx-auto py-8 px-16 dark:text-white">
@@ -62,7 +63,6 @@ const LoginPage = (): JSX.Element => {
             placeholder="Email"
             onChange={handleInputChange}
             value={formData.email}
-            // required
             autoFocus
             aria-label="email"
           />
@@ -74,16 +74,25 @@ const LoginPage = (): JSX.Element => {
         </div>
         <div className="relative dark:bg-gray-950 rounded-full h-10">
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-300 focus:ring dark:focus:ring-slate-400 placeholder:opacity-75"
             name="password"
             placeholder="Password"
             onChange={handleInputChange}
             value={formData.password}
-            // required
             autoFocus
             aria-label="password"
           />
+          <div className="absolute bottom-3 right-6 w-5 h-5 flex items-center cursor-pointer">
+            <span
+              className="background-transparent text-cyan-600 font-semibold opacity-90 hover:opacity-100 cursor-pointer"
+              onClick={handleShowPassword}
+              aria-label="Icon"
+              role="button"
+            >
+              {showPassword ? <Visibility/> : <VisibilityOff/>}
+            </span>
+          </div>
           {error ? (
             <div className="absolute -bottom-5 left-1 text-xs text-red-400">
               {error}
