@@ -1,4 +1,4 @@
-import { AuthState, AUTH_SUCCESS, AUTH_ERROR, LOG_OUT, AuthActionType } from "./types";
+import { AuthState, AUTH_SUCCESS, AUTH_ERROR, LOG_OUT, CLEAR_ERROR, AuthActionType } from "./types";
 
 const initialState: AuthState = {
     token: sessionStorage.getItem('access_token'),
@@ -13,6 +13,7 @@ export const authReducer = (state = initialState, action: AuthActionType): AuthS
                 ...state,
                 token: action.payload,
                 isAuthenticated: true,
+                error: null
             };
         case AUTH_ERROR:
             return {
@@ -20,6 +21,11 @@ export const authReducer = (state = initialState, action: AuthActionType): AuthS
                 token: null,
                 isAuthenticated: false,
                 error: action.payload
+            }
+        case CLEAR_ERROR:
+            return {
+                ...state,
+                error: null
             }
         case LOG_OUT:
             sessionStorage.removeItem('access_token');
