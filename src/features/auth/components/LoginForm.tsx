@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { ButtonLoader, RootState, ThunkAppDispatch } from "src/shared";
+import { ButtonLoader } from "src/shared";
+import { RootState, ThunkAppDispatch } from "src/shared/types";
 import { login } from "../authActions";
 
 const LoginPage = (): JSX.Element => {

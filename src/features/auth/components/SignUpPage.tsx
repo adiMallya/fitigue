@@ -7,7 +7,8 @@ import {
   NavigateNext,
   NavigateBefore,
 } from "@mui/icons-material";
-import { ButtonLoader, RootState } from "src/shared";
+import { ButtonLoader } from "src/shared";
+import { RootState } from "src/shared/types";
 import { useSignUp } from "src/features/auth";
 
 const SignUpPage = (): JSX.Element => {
