@@ -3,6 +3,7 @@ import { AppThunk } from 'src/shared';
 import { UserDataType } from './types';
 
 const login = (email: string, password: string): AppThunk => async (dispatch) => {
+    dispatch({ type: "authenticate/pending" });
     try {
         const data = await authService.postLoginData(email, password);
         if (data.success) {
@@ -21,6 +22,7 @@ const login = (email: string, password: string): AppThunk => async (dispatch) =>
 };
 
 const signUp = (formData: UserDataType): AppThunk => async (dispatch) => {
+    dispatch({ type: "authenticate/pending" });
     try {
         const data = await authService.postSignUpData(formData);
         if (data.success) {
@@ -39,4 +41,3 @@ const signUp = (formData: UserDataType): AppThunk => async (dispatch) => {
 }
 
 export { login, signUp };
-

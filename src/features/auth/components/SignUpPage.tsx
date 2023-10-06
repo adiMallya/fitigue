@@ -7,13 +7,14 @@ import {
   NavigateNext,
   NavigateBefore,
 } from "@mui/icons-material";
-import { RootState } from "src/shared";
+import { ButtonLoader } from "src/shared";
+import { RootState } from "src/shared/types";
 import { useSignUp } from "src/features/auth";
 
 const SignUpPage = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuthenticated, error } = useSelector(
+  const { isAuthenticated, loading, error } = useSelector(
     (state: RootState) => state.auth
   );
 
@@ -203,8 +204,9 @@ const SignUpPage = (): JSX.Element => {
               type="submit"
               className="w-full bg-cyan-600 dark:text-white font-semibold py-2 px-4 border-none rounded-full outline-none opacity-90 hover:opacity-100 cursor-pointer"
               aria-label="Signup"
+              disabled={loading}
             >
-              Signup
+              {loading ? <ButtonLoader text="Authenticating..." /> : "Signup"}
             </button>
             <button
               type="button"

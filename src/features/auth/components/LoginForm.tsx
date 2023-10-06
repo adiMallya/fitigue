@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { RootState, ThunkAppDispatch } from "src/shared";
+import { ButtonLoader } from "src/shared";
+import { RootState, ThunkAppDispatch } from "src/shared/types";
 import { login } from "../authActions";
 
 const LoginPage = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch<ThunkAppDispatch>();
-  const { isAuthenticated, error } = useSelector(
+  const { isAuthenticated, loading, error } = useSelector(
     (state: RootState) => state.auth
   );
 
@@ -103,8 +104,13 @@ const LoginPage = (): JSX.Element => {
           type="submit"
           className="w-full bg-cyan-600 dark:text-white font-semibold py-2 px-4 border-none rounded-full outline-none opacity-90 hover:opacity-100 cursor-pointer"
           aria-label="Login"
+          disabled={loading}
         >
-          Login
+          {loading ? (
+            <ButtonLoader text="Authenticating..."/>
+          ) : (
+            "Login"
+          )}
         </button>
         <button
           type="button"
