@@ -30,7 +30,11 @@ interface ClearErrorAction {
     type: typeof CLEAR_ERROR;
 }
 
-export type AuthActionType = AuthSuccessAction | AuthErrorAction | LogoutAction | ClearErrorAction;
+interface AuthPendingAction {
+    type: typeof AUTH_PENDING;
+}
+
+export type AuthActionType = AuthSuccessAction | AuthErrorAction | AuthPendingAction | LogoutAction | ClearErrorAction;
 //
 export interface UserDataType {
     firstName: string;

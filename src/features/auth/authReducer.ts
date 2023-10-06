@@ -1,8 +1,9 @@
-import { AuthState, AUTH_SUCCESS, AUTH_ERROR, LOG_OUT, CLEAR_ERROR, AuthActionType } from "./types";
+import { AuthState, AUTH_SUCCESS, AUTH_ERROR, LOG_OUT, CLEAR_ERROR, AuthActionType, AUTH_PENDING } from "./types";
 
 const initialState: AuthState = {
     token: sessionStorage.getItem('access_token'),
     isAuthenticated: sessionStorage.getItem('access_token') ? true : false,
+    loading: false,
     error: null
 };
 
@@ -13,6 +14,7 @@ export const authReducer = (state = initialState, action: AuthActionType): AuthS
                 ...state,
                 token: action.payload,
                 isAuthenticated: true,
+                loading: false,
                 error: null
             };
         case AUTH_ERROR:
@@ -20,7 +22,8 @@ export const authReducer = (state = initialState, action: AuthActionType): AuthS
                 ...state,
                 token: null,
                 isAuthenticated: false,
-                error: action.payload
+                error: action.payload,
+                loading: false,
             }
         case CLEAR_ERROR:
             return {
@@ -32,7 +35,13 @@ export const authReducer = (state = initialState, action: AuthActionType): AuthS
             return {
                 token: null,
                 isAuthenticated: false,
-                error: null
+                error: null,
+                loading: false
+            }
+        case AUTH_PENDING:
+            return {
+                ...state,
+                loading: true
             }
         default: return state;
     }
