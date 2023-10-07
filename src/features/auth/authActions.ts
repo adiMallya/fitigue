@@ -1,6 +1,5 @@
 import * as authService from './authService';
-import { AppThunk } from 'src/shared';
-import { UserDataType } from './types';
+import { AppThunk, UserDataType } from 'src/shared/types';
 
 const login = (email: string, password: string): AppThunk => async (dispatch) => {
     dispatch({ type: "authenticate/pending" });
