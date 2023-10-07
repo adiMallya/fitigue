@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Dashboard, FitnessCenterOutlined, Egg, TrackChanges } from '@mui/icons-material';
 
-const Navbar = () => {
+const Navbar = (): JSX.Element => {
     return (
         <nav className="fixed inset-x-0 bottom-4 md:static md:top-0 bg-cyan-600 p-4 rounded-full md:rounded-none md:w-full flex items-center justify-around md:justify-center mb-4">
             <ul className="flex w-full justify-around">
