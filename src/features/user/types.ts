@@ -1,9 +1,10 @@
 import { UserDataType } from "src/shared";
 
 export interface ProfileData extends UserDataType {
-    totalCaloriesBurned: number,
-    totalCaloriesConsumed: number,
-    totalCalorieGoal: number
+    totalCaloriesBurned: number;
+    totalCaloriesConsumed: number;
+    totalCalorieGoal: number;
+    [key: string]: any;
 }
 // shape of user state
 export interface UserState {
