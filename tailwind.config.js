@@ -9,7 +9,11 @@ export default {
       lg: "1024px",
       xl: "1280px",
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        'neumorphic': '0 0 10px #0e7490, 0 -0 10px #0e7490'
+      }
+    },
   },
   plugins: [],
 }

@@ -1,8 +1,8 @@
-export const ButtonLoader = ({ text } : { text: string }): JSX.Element => (
-  <span className="items-center">
+export const Loader = (): JSX.Element => (
+  <div role="status" className="fixed inset-1/2 z-40">
     <svg
       aria-hidden="true"
-      className="inline w-4 h-4 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-white"
+      className="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-cyan-500"
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -16,6 +16,6 @@ export const ButtonLoader = ({ text } : { text: string }): JSX.Element => (
         fill="currentFill"
       />
     </svg>
-    {text}
-  </span>
+    {/* <span className="sr-only">Loading...</span> */}
+  </div>
 );
