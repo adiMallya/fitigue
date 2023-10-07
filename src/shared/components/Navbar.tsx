@@ -34,9 +34,9 @@ const Navbar = (): JSX.Element => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/profile" className="text-white flex flex-col items-center">
+                    <Link to="#" className="text-white flex flex-col items-center">
                         {user?.sex === 'Female' ? (<Face3/>) : user?.sex === 'Male' ? <Face/> : <FaceRetouchingNatural/>}
-                        <span className='md:block hidden' aria-label='Profile'>Hi, {user?.username}</span>
+                        <span className='md:block hidden' aria-label='Profile'>Profile</span>
                     </Link>
                 </li>
             </ul>

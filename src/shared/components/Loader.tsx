@@ -1,5 +1,5 @@
 export const Loader = (): JSX.Element => (
-  <div role="status" className="text-center">
+  <div role="status" className="fixed inset-1/2 z-40">
     <svg
       aria-hidden="true"
       className="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-cyan-500"
