@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import toast from "react-hot-toast";
 import { CustomSelect } from "src/shared";
 import { RootState, ThunkAppDispatch } from "src/shared/types";
 import { ACTIVITIES } from "src/utils";
@@ -9,7 +8,6 @@ import { createActivity } from "..";
 
 const ActivityForm = (): JSX.Element => {
   const dispatch = useDispatch<ThunkAppDispatch>();
-  const error = useSelector((state: RootState) => state.activity.error);
   const token = useSelector((state: RootState) => state.auth.token!);
 
   const [formData, setFormData] = useState({ type: "", duration: "" });
@@ -31,9 +29,6 @@ const ActivityForm = (): JSX.Element => {
 
     const { type, duration } = formData;
     dispatch(createActivity(type, Number(duration), token));
-    if (error) {
-      toast.error(error);
-    }
   };
 
   return (

@@ -8,17 +8,24 @@ import {
 import { Navbar, SkeletonCard } from "src/shared/components";
 import { RootState, ThunkAppDispatch } from "src/shared/types";
 import { sortByCreatedTime } from "src/utils";
+import toast from "react-hot-toast";
 
 function Activity(): JSX.Element {
   const dispatch = useDispatch<ThunkAppDispatch>();
   const token = useSelector((state: RootState) => state.auth.token);
-  const { loading, activities } = useSelector(
+  const { loading, activities, error } = useSelector(
     (state: RootState) => state.activity
   );
 
   useEffect(() => {
     dispatch(fetchActivities(token!));
   }, [dispatch, token]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
 
   return (
     <>
