@@ -43,7 +43,7 @@ const postActivity = async (name: string, duration: number, authToken: string): 
 
 const deleteActivity = async (activityId: string, authToken: string): Promise<AxiosResponse> => {
     try {
-        const response: AxiosResponse = await axios.post(`${API_BASE}/exercises/${activityId}`, {
+        const response: AxiosResponse = await axios.delete(`${API_BASE}/exercises/${activityId}`, {
             headers: {
                 Authorization: `Bearer ${authToken}`
             }

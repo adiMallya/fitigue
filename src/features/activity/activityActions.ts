@@ -36,7 +36,6 @@ const createActivity = (name: string, duration: number, token: string): AppThunk
 }
 
 const deleteActivity = (id: string, token: string): AppThunk => async (dispatch) => {
-    dispatch({ type: "activity/pending" });
     try {
         const res = await activityService.deleteActivity(id, token);
         if (res.status === 204) {
