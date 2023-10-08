@@ -7,6 +7,7 @@ import {
 } from "src/features/activity";
 import { Navbar, SkeletonCard } from "src/shared/components";
 import { RootState, ThunkAppDispatch } from "src/shared/types";
+import { sortByCreatedTime } from "src/utils";
 
 function Activity(): JSX.Element {
   const dispatch = useDispatch<ThunkAppDispatch>();
@@ -31,7 +32,7 @@ function Activity(): JSX.Element {
           {loading ? (
             [...Array(3)].map((_, idx) => <SkeletonCard key={idx} />)
           ) : activities?.length > 0 ? (
-            activities.map((activity) => (
+            sortByCreatedTime(activities).map((activity) => (
               <ActivityCard activity={activity} key={activity?._id} />
             ))
           ) : (
