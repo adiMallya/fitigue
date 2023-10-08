@@ -1,2 +1,2 @@
 export * from "./types";
-export { Loader, ButtonLoader, Navbar } from "./components";
+export { Loader, ButtonLoader, Navbar, CustomSelect } from "./components";
