@@ -39,13 +39,13 @@ const ActivityCard: React.FC<{ activity: PropType }> = ({
       <div className="flex flex-col gap-2 mt-8">
       <p className="text-md font-semibold text-slate-400">
         Duration:{" "}
-        <span className="font-normal text-slate-100">
+        <span className="font-normal text-slate-100" aria-label="Duration">
           {minToHourFormat(activity?.duration)}
         </span>
       </p>
       <p className="text-md font-semibold text-slate-400">
         Calorie:{" "}
-        <span className="font-normal text-slate-100">{Math.round(activity?.calories)} <span className="font-xs text-slate-400"> kcal </span></span>
+        <span className="font-normal text-slate-100" aria-label="Calorie">{Math.round(activity?.calories)} <span className="font-xs text-slate-400"> kcal </span></span>
       </p>
       </div>
     </div>
