@@ -53,6 +53,7 @@ const ActivityForm = (): JSX.Element => {
         name="duration"
         value={formData?.duration}
         onChange={handleInputChange}
+        aria-label="Duration"
       />
       <button
         type="submit"
