@@ -22,7 +22,7 @@ const ActivityCard: React.FC<{ activity: PropType }> = ({
     dispatch(deleteActivity(activityId, token!));
 
   return (
-    <div className="relative bg-inherit p-4 rounded-lg box-content w-full md:w-auto h-full border border-gray-600">
+    <div className="relative bg-inherit p-4 rounded-lg box-content w-full md:w-52 h-full border border-gray-600">
       <button
         type="button"
         className="absolute top-2 right-2 cursor-pointer"
@@ -39,13 +39,13 @@ const ActivityCard: React.FC<{ activity: PropType }> = ({
       <div className="flex flex-col gap-2 mt-8">
       <p className="text-md font-semibold text-slate-400">
         Duration:{" "}
-        <span className="font-normal text-slate-100">
+        <span className="font-normal text-slate-100" aria-label="Duration">
           {minToHourFormat(activity?.duration)}
         </span>
       </p>
       <p className="text-md font-semibold text-slate-400">
         Calorie:{" "}
-        <span className="font-normal text-slate-100">{Math.round(activity?.calories)} <span className="font-xs text-slate-400"> kcal </span></span>
+        <span className="font-normal text-slate-100" aria-label="Calorie">{Math.round(activity?.calories)} <span className="font-xs text-slate-400"> kcal </span></span>
       </p>
       </div>
     </div>

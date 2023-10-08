@@ -1,25 +1,25 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  ActivityCard,
-  ActivityForm,
-  fetchActivities,
-} from "src/features/activity";
+  FoodForm,
+  FoodCard,  
+  fetchFood
+} from "src/features/food";
 import { Navbar, SkeletonCard } from "src/shared/components";
 import { RootState, ThunkAppDispatch } from "src/shared/types";
 import { sortByCreatedTime } from "src/utils";
 import toast from "react-hot-toast";
-import { ActivityData } from "src/features/activity/types";
+import { FoodData } from "src/features/food/types";
 
-function Activity(): JSX.Element {
+function Food(): JSX.Element {
   const dispatch = useDispatch<ThunkAppDispatch>();
   const token = useSelector((state: RootState) => state.auth.token);
-  const { loading, activities, error } = useSelector(
-    (state: RootState) => state.activity
+  const { loading, food, error } = useSelector(
+    (state: RootState) => state.food
   );
 
   useEffect(() => {
-    dispatch(fetchActivities(token!));
+    dispatch(fetchFood(token!));
   }, [dispatch, token]);
 
   useEffect(() => {
@@ -33,20 +33,20 @@ function Activity(): JSX.Element {
     <>
       <Navbar />
       <main className="flex flex-col items-start gap-12 w-5/6 m-auto">
-        <h1 className="text-white font-bold text-4xl mt-4">Activities</h1>
+        <h1 className="text-white font-bold text-4xl mt-4">Food</h1>
         <section>
-          <ActivityForm />
+          <FoodForm />
         </section>
         <section className="flex flex-wrap gap-8">
           {loading ? (
             [...Array(3)].map((_, idx) => <SkeletonCard key={idx} />)
-          ) : activities?.length > 0 ? (
-            sortByCreatedTime(activities).map((activity) => (
-              <ActivityCard activity={activity as ActivityData} key={activity?._id} />
+          ) : food?.length > 0 ? (
+            sortByCreatedTime(food).map((food) => (
+              <FoodCard food={food as FoodData} key={food?._id} />
             ))
           ) : (
             <p className="font-bold text-lg text-gray-100 text-center">
-              No activities added
+              No food added
             </p>
           )}
         </section>
@@ -55,4 +55,4 @@ function Activity(): JSX.Element {
   );
 }
 
-export { Activity };
+export { Food };

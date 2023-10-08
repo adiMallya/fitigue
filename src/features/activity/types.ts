@@ -19,6 +19,7 @@ export const ACTIVITY_SUCCESS = 'activity/success';
 export const ACTIVITY_PENDING = 'activity/pending';
 export const ACTIVITY_ERROR = 'activity/error';
 export const ACTIVITY_DELETE = 'activity/delete';
+export const CLEAR_ERROR = 'clear/error';
 
 interface ActivitySuccessAction {
     type: typeof ACTIVITY_SUCCESS;
@@ -39,4 +40,8 @@ interface ActivityPendingAction {
     type: typeof ACTIVITY_PENDING;
 }
 
-export type ActivityActionType = ActivitySuccessAction | ActivityDeleteAction | ActivityPendingAction | ActivityErrorAction;
+interface ClearErrorAction {
+    type: typeof CLEAR_ERROR;
+}
+
+export type ActivityActionType = ActivitySuccessAction | ActivityDeleteAction | ActivityPendingAction | ActivityErrorAction | ClearErrorAction;

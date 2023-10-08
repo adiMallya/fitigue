@@ -1,31 +1,31 @@
-import { ActivityState, ActivityActionType, ACTIVITY_SUCCESS, ACTIVITY_DELETE, ACTIVITY_PENDING, ACTIVITY_ERROR, CLEAR_ERROR } from "./types";
+import { FoodState, FoodActionType, FOOD_SUCCESS, FOOD_DELETE, FOOD_PENDING, FOOD_ERROR, CLEAR_ERROR } from "./types";
 
-const initialState: ActivityState = {
-    activities: [],
+const initialState: FoodState = {
+    food: [],
     loading: false,
     error: null
 };
 
-export const activityReducer = (state = initialState, action: ActivityActionType): ActivityState => {
+export const foodReducer = (state = initialState, action: FoodActionType): FoodState => {
     switch (action.type) {
-        case ACTIVITY_SUCCESS:
+        case FOOD_SUCCESS:
             return {
-                activities: action.payload,
+                food: action.payload,
                 loading: false,
                 error: null
             };
-        case ACTIVITY_DELETE:
+        case FOOD_DELETE:
             return {
                 ...state,
-                activities: state.activities.filter(({ _id }) => action.payload !== _id),
+                food: state.food.filter(({ _id }) => action.payload !== _id),
             };
-        case ACTIVITY_ERROR:
+        case FOOD_ERROR:
             return {
                 ...state,
                 error: action.payload,
                 loading: false
             }
-        case ACTIVITY_PENDING:
+        case FOOD_PENDING:
             return {
                 ...state,
                 loading: true

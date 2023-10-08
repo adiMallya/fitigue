@@ -46,10 +46,9 @@ const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange
         })
       };
       
-      const [selectedValue, setSelectedValue] = useState<OptionType | null>(userOptions[0] || null);
+      const [selectedValue, setSelectedValue] = useState<OptionType | null>(null);
 
       const handleChange = (selectedOption: SingleValue<OptionType>, actionMeta: ActionMeta<OptionType>): void => {
-        // const value = selectedOption?.value || '';
         setSelectedValue(selectedOption);
 
         if (onChange && selectedOption) {

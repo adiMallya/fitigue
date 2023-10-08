@@ -7,7 +7,7 @@ const Navbar = (): JSX.Element => {
     const { user } = useSelector((state: RootState) => state.user);
 
     return (
-        <nav className="fixed inset-x-0 bottom-4 md:static md:top-0 bg-cyan-600 p-4 rounded-full md:rounded-none md:w-full flex items-center justify-around md:justify-center mb-4">
+        <nav className="fixed inset-x-0 bottom-4 md:static md:top-0 bg-cyan-600 p-4 rounded-full md:rounded-none md:w-full flex items-center justify-around md:justify-center mb-4 z-40">
             <ul className="flex w-full justify-around">
                 <li>
                     <Link to="/activity" className="text-white flex flex-col items-center">
