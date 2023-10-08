@@ -6,7 +6,7 @@ import { ButtonLoader } from "src/shared";
 import { RootState, ThunkAppDispatch } from "src/shared/types";
 import { login } from "../authActions";
 
-const LoginPage = (): JSX.Element => {
+const LoginPage: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch<ThunkAppDispatch>();
   const { isAuthenticated, loading, error } = useSelector(

@@ -11,7 +11,7 @@ import { ButtonLoader } from "src/shared";
 import { RootState } from "src/shared/types";
 import { useSignUp } from "src/features/auth";
 
-const SignUpPage = (): JSX.Element => {
+const SignUpPage: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuthenticated, loading, error } = useSelector(
