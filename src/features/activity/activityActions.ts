@@ -18,7 +18,6 @@ const fetchActivities = (token: string): AppThunk => async (dispatch) => {
 }
 
 const createActivity = (name: string, duration: number, token: string): AppThunk => async (dispatch) => {
-    dispatch({ type: "activity/pending" });
     try {
         const data = await activityService.postActivity(name, duration, token);
         if (data.success) {
