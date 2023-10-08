@@ -6,7 +6,7 @@ import { ButtonLoader } from "src/shared";
 import { RootState, ThunkAppDispatch } from "src/shared/types";
 import { login } from "../authActions";
 
-const LoginPage = (): JSX.Element => {
+const LoginPage: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch<ThunkAppDispatch>();
   const { isAuthenticated, loading, error } = useSelector(
@@ -77,7 +77,7 @@ const LoginPage = (): JSX.Element => {
         <div className="relative dark:bg-gray-950 rounded-full h-10">
           <input
             type={showPassword ? "text" : "password"}
-            className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-300 focus:ring dark:focus:ring-slate-400 placeholder:opacity-75"
+            className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-400 focus:ring dark:focus:ring-slate-400 placeholder:opacity-75"
             name="password"
             placeholder="Password"
             onChange={handleInputChange}

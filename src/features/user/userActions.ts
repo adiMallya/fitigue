@@ -7,7 +7,7 @@ const fetchMyDetails = (token: string): AppThunk => async (dispatch) => {
     try {
         const data = await userService.getUser(token);
         if (data.success) {
-            const { _id, _createdAt, _updatedAt, __v, ...rest } = data.data as ProfileData;
+            const { _id, createdAt, updatedAt, __v, ...rest } = data.data as ProfileData;
             dispatch({ type: "user/success", payload: rest });
         }
     } catch (error: any) {

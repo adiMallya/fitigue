@@ -11,7 +11,7 @@ import { ButtonLoader } from "src/shared";
 import { RootState } from "src/shared/types";
 import { useSignUp } from "src/features/auth";
 
-const SignUpPage = (): JSX.Element => {
+const SignUpPage: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuthenticated, loading, error } = useSelector(
@@ -94,7 +94,7 @@ const SignUpPage = (): JSX.Element => {
             <div className="relative dark:bg-gray-950 rounded-full h-10">
               <input
                 type={showPassword ? "text" : "password"}
-                className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-300 focus:ring dark:focus:ring-slate-400 placeholder:opacity-75"
+                className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-400 focus:ring dark:focus:ring-slate-400 placeholder:opacity-75"
                 name="password"
                 placeholder="Password"
                 title="Password length must be of minimum 6 characters"
