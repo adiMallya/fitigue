@@ -22,7 +22,7 @@ const ActivityCard: React.FC<{ activity: PropType }> = ({
     dispatch(deleteActivity(activityId, token!));
 
   return (
-    <div className="relative bg-inherit p-4 rounded-lg box-content w-full md:w-auto h-full border border-gray-600">
+    <div className="relative bg-inherit p-4 rounded-lg box-content w-full md:w-52 h-full border border-gray-600">
       <button
         type="button"
         className="absolute top-2 right-2 cursor-pointer"
