@@ -1,4 +1,4 @@
-export const ButtonLoader = ({ text } : { text: string }): JSX.Element => (
+export const ButtonLoader: React.FC<{ text: string }> = ({ text }): JSX.Element => (
   <span className="items-center">
     <svg
       aria-hidden="true"

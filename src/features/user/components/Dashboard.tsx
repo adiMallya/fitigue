@@ -1,10 +1,12 @@
 import { FitnessCenterOutlined, Egg, TrackChanges } from "@mui/icons-material";
 
-const Dashboard = (props: {
+interface PropType {
   totalCaloriesBurned: number;
   totalCaloriesConsumed: number;
   totalCalorieGoal: number;
-}): JSX.Element => {
+}
+
+const Dashboard: React.FC<PropType> = (props): JSX.Element => {
   const { totalCaloriesBurned, totalCaloriesConsumed, totalCalorieGoal } =
     props;
 
