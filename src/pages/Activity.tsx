@@ -25,6 +25,7 @@ function Activity(): JSX.Element {
     if (error) {
       toast.error(error);
     }
+    dispatch({ type: "clear/error" })
   }, [error]);
 
   return (

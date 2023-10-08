@@ -1,4 +1,4 @@
-import { ActivityState, ActivityActionType, ACTIVITY_SUCCESS, ACTIVITY_DELETE, ACTIVITY_PENDING, ACTIVITY_ERROR } from "./types";
+import { ActivityState, ActivityActionType, ACTIVITY_SUCCESS, ACTIVITY_DELETE, ACTIVITY_PENDING, ACTIVITY_ERROR, CLEAR_ERROR } from "./types";
 
 const initialState: ActivityState = {
     activities: [],
@@ -29,6 +29,11 @@ export const activityReducer = (state = initialState, action: ActivityActionType
             return {
                 ...state,
                 loading: true
+            }
+        case CLEAR_ERROR:
+            return {
+                ...state,
+                error: null
             }
         default: return state;
     }
