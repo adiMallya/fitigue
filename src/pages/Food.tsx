@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-//   FoodForm,
+  FoodForm,
   FoodCard,  
   fetchFood
 } from "src/features/food";
@@ -35,7 +35,7 @@ function Food(): JSX.Element {
       <main className="flex flex-col items-start gap-12 w-5/6 m-auto">
         <h1 className="text-white font-bold text-4xl mt-4">Food</h1>
         <section>
-          {/* <FoodForm /> */}
+          <FoodForm />
         </section>
         <section className="flex flex-wrap gap-8">
           {loading ? (
