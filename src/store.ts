@@ -4,6 +4,7 @@ import { authReducer } from "src/features/auth";
 import { userReducer } from "src/features/user";
 import { activityReducer } from "src/features/activity";
 import { foodReducer } from "src/features/food";
+import { goalReducer } from "src/features/goals";
 
 const composeEnhancers = (import.meta.env.REACT_APP_NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE) || compose;
 
@@ -11,7 +12,8 @@ export const rootReducer = combineReducers({
     auth: authReducer,
     user: userReducer,
     activity: activityReducer,
-    food: foodReducer
+    food: foodReducer,
+    goal: goalReducer
 });
 
 const store = createStore(
