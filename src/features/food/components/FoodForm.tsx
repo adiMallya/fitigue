@@ -27,6 +27,7 @@ const FoodForm = (): JSX.Element => {
 
     const { name, carbs, proteins, fats } = formData;
     dispatch(createFood(name, Number(carbs), Number(proteins), Number(fats), token));
+    setFormData({ name: "", carbs: "", proteins: "", fats: "" });
   };
 
   return (
