@@ -2,7 +2,7 @@ import { FoodState, FoodActionType, FOOD_SUCCESS, FOOD_DELETE, FOOD_PENDING, FOO
 
 const initialState: FoodState = {
     food: [],
-    loading: false,
+    loading: true,
     error: null
 };
 

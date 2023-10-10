@@ -19,8 +19,10 @@ function Food(): JSX.Element {
   );
 
   useEffect(() => {
-    dispatch(fetchFood(token!));
-  }, [dispatch, token]);
+    if (loading) {
+      dispatch(fetchFood(token!));      
+    }
+  }, [loading, token]);
 
   useEffect(() => {
     if (error) {

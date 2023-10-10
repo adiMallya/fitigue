@@ -2,7 +2,6 @@ import { AppThunk } from "src/shared";
 import * as foodService from "./foodService";
 
 const fetchFood = (token: string): AppThunk => async (dispatch) => {
-    dispatch({ type: "food/pending" });
     try {
         const data = await foodService.getFoodData(token);
         if (data.success) {
