@@ -3,7 +3,6 @@ import * as userService from "./userService";
 import { AppThunk } from 'src/shared/types';
 
 const fetchMyDetails = (token: string): AppThunk => async (dispatch) => {
-    dispatch({ type: "user/pending" });
     try {
         const data = await userService.getUser(token);
         if (data.success) {

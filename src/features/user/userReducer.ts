@@ -2,7 +2,7 @@ import { USER_SUCCESS, USER_PENDING, USER_ERROR, UserActionType, UserState } fro
 
 const initialState: UserState = {
     user: null,
-    loading: false,
+    loading: true,
     error: null
 };
 
