@@ -38,6 +38,7 @@ const GoalsForm = (): JSX.Element => {
 
     const { name, description, targetDate, targetCalories } = formData;
     dispatch(createGoal(name, description, targetDate, Number(targetCalories), token));
+    setFormData({ name: "", description: "", targetDate: "", targetCalories: "" });
   };
 
   return (
