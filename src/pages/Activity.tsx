@@ -18,8 +18,10 @@ function Activity(): JSX.Element {
   );
 
   useEffect(() => {
-    dispatch(fetchActivities(token!));
-  }, [dispatch, token]);
+    if (loading) {
+      dispatch(fetchActivities(token!));      
+    }
+  }, [loading, token]);
 
   useEffect(() => {
     if (error) {

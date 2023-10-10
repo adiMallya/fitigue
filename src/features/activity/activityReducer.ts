@@ -2,7 +2,7 @@ import { ActivityState, ActivityActionType, ACTIVITY_SUCCESS, ACTIVITY_DELETE, A
 
 const initialState: ActivityState = {
     activities: [],
-    loading: false,
+    loading: true,
     error: null
 };
 

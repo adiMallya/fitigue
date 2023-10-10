@@ -2,7 +2,6 @@ import { AppThunk } from "src/shared";
 import * as activityService from "./activityService";
 
 const fetchActivities = (token: string): AppThunk => async (dispatch) => {
-    dispatch({ type: "activity/pending" });
     try {
         const data = await activityService.getActivityData(token);
         if (data.success) {
