@@ -1,11 +1,13 @@
 //shape of goal data
+export type Status = 'In Progress' | 'Acheived' | 'Abandoned';
+
 export interface GoalData {
     _id: string;
     name: string;
     description: string;
     targetDate: string;
     targetCalories: number;
-    status: 'In Progress' | 'Acheived' | 'Abandoned';
+    status: Status;
     [key: string]: any;
 }
 
@@ -18,7 +20,6 @@ export interface GoalState {
 
 // action types
 export const GOAL_SUCCESS = 'goal/success';
-export const GOAL_UPDATE = 'goal/update';
 export const GOAL_PENDING = 'goal/pending';
 export const GOAL_ERROR = 'goal/error';
 export const GOAL_DELETE = 'goal/delete';
@@ -27,11 +28,6 @@ export const CLEAR_ERROR = 'clear/error';
 interface GoalSuccessAction {
     type: typeof GOAL_SUCCESS;
     payload: GoalData[];
-}
-
-interface GoalUpdateAction {
-    type: typeof GOAL_UPDATE;
-    payload: 'In Progress' | 'Acheived' | 'Abandoned';
 }
 
 interface GoalDeleteAction {
