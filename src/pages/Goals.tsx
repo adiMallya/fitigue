@@ -1,25 +1,27 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  FoodForm,
-  FoodCard,  
-  fetchFood
-} from "src/features/food";
+  GoalsForm,
+  GoalsCard,  
+  fetchGoals
+} from "src/features/goals";
 import { Navbar, SkeletonCard } from "src/shared/components";
 import { RootState, ThunkAppDispatch } from "src/shared/types";
 import toast from "react-hot-toast";
-import { FoodData } from "src/features/food/types";
+import { GoalData } from "src/features/goals/types";
 
-function Food(): JSX.Element {
+function Goals(): JSX.Element {
   const dispatch = useDispatch<ThunkAppDispatch>();
   const token = useSelector((state: RootState) => state.auth.token);
-  const { loading, food, error } = useSelector(
-    (state: RootState) => state.food
+  const { loading, goals, error } = useSelector(
+    (state: RootState) => state.goal
   );
 
   useEffect(() => {
-    dispatch(fetchFood(token!));
-  }, [dispatch, token]);
+    if (loading) {
+      dispatch(fetchGoals(token!));
+    }
+  }, [token, loading]);
 
   useEffect(() => {
     if (error) {
@@ -32,20 +34,20 @@ function Food(): JSX.Element {
     <>
       <Navbar />
       <main className="flex flex-col items-start gap-12 w-5/6 m-auto">
-        <h1 className="text-white font-bold text-4xl mt-4">Food</h1>
+        <h1 className="text-white font-bold text-4xl mt-4">Your Goals</h1>
         <section>
-          <FoodForm />
+          <GoalsForm />
         </section>
         <section className="flex flex-wrap gap-8">
           {loading ? (
             [...Array(3)].map((_, idx) => <SkeletonCard key={idx} />)
-          ) : food?.length > 0 ? (
-            food.map((food) => (
-              <FoodCard food={food as FoodData} key={food?._id} />
+          ) : goals?.length > 0 ? (
+            goals.map((goal) => (
+              <GoalsCard goal={goal as GoalData} key={goal?._id} />
             ))
           ) : (
             <p className="font-bold text-lg text-gray-100 text-center">
-              No food added
+              No goal added
             </p>
           )}
         </section>
@@ -54,4 +56,4 @@ function Food(): JSX.Element {
   );
 }
 
-export { Food };
+export { Goals };

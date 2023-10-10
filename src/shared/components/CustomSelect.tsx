@@ -11,17 +11,20 @@ interface PropType {
   placeholder: string;
   name: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  isDisabled?: boolean;
 }
 
-const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange }) : JSX.Element => {
+const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange, isDisabled }) : JSX.Element => {
     const userOptions: OptionType[] = options.map((option: string) => ({ value: option, label: option }));
+
+    const [selectedValue, setSelectedValue] = useState<OptionType | null>(null);
 
     const customStyles: StylesConfig<OptionType> = {
         option: (provided, state) => ({
           ...provided,
           backgroundColor: state.isSelected ? '#0891b2' : state.isFocused ? '#06b6d4' : '#030712',
           color: 'white',
-          cursor: 'pointer'
+          cursor: isDisabled ? 'none' : 'pointer'
         }),
         menu: (provided) => ({
           ...provided,
@@ -46,8 +49,6 @@ const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange
         })
       };
       
-      const [selectedValue, setSelectedValue] = useState<OptionType | null>(null);
-
       const handleChange = (selectedOption: SingleValue<OptionType>, actionMeta: ActionMeta<OptionType>): void => {
         setSelectedValue(selectedOption);
 
@@ -73,6 +74,7 @@ const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange
           value={selectedValue}
           onChange={handleChange}
           isSearchable
+          isDisabled={isDisabled}
         />
       );
 }
