@@ -7,7 +7,6 @@ import {
 } from "src/features/food";
 import { Navbar, SkeletonCard } from "src/shared/components";
 import { RootState, ThunkAppDispatch } from "src/shared/types";
-import { sortByCreatedTime } from "src/utils";
 import toast from "react-hot-toast";
 import { FoodData } from "src/features/food/types";
 
@@ -43,7 +42,7 @@ function Food(): JSX.Element {
           {loading ? (
             [...Array(3)].map((_, idx) => <SkeletonCard key={idx} />)
           ) : food?.length > 0 ? (
-            sortByCreatedTime(food).map((food) => (
+            food.map((food) => (
               <FoodCard food={food as FoodData} key={food?._id} />
             ))
           ) : (

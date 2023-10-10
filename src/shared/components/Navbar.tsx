@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Dashboard, FitnessCenterOutlined, Egg, TrackChanges, Face, Face3, FaceRetouchingNatural } from '@mui/icons-material';
-import { RootState } from 'src/shared/types';
+import { useDispatch } from 'react-redux';
+import { Dashboard, FitnessCenterOutlined, Egg, TrackChanges, Logout} from '@mui/icons-material';
+import { ThunkAppDispatch } from 'src/shared/types';
 
 const Navbar = (): JSX.Element => {
-    const { user } = useSelector((state: RootState) => state.user);
+    const dispatch = useDispatch<ThunkAppDispatch>();
+    
+    const handleLogout = () => dispatch({ type: 'authenticate/logout' });
 
     return (
-        <nav className="fixed inset-x-0 bottom-4 md:static md:top-0 bg-cyan-600 p-4 rounded-full md:rounded-none md:w-full flex items-center justify-around md:justify-center mb-4 z-40">
+        <nav className="fixed inset-x-0 bottom-0 md:static md:top-0 bg-cyan-600 p-4 md:rounded-none md:w-full flex items-center justify-around md:justify-center z-40">
             <ul className="flex w-full justify-around">
                 <li>
                     <Link to="/activity" className="text-white flex flex-col items-center">
@@ -34,9 +36,11 @@ const Navbar = (): JSX.Element => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="#" className="text-white flex flex-col items-center">
-                        {user?.sex === 'Female' ? (<Face3/>) : user?.sex === 'Male' ? <Face/> : <FaceRetouchingNatural/>}
-                        <span className='md:block hidden' aria-label='Profile'>Profile</span>
+                    <Link to="#" className="text-white flex flex-col items-center" onClick={handleLogout}>
+                        {/* {user?.sex === 'Female' ? (<Face3/>) : user?.sex === 'Male' ? <Face/> : <FaceRetouchingNatural/>}
+                        <span className='md:block hidden' aria-label='Profile'>Profile</span> */}
+                        <Logout />
+                        <span className='md:block hidden' aria-label='Log out'>Log Out</span>
                     </Link>
                 </li>
             </ul>

@@ -29,6 +29,7 @@ const ActivityForm = (): JSX.Element => {
 
     const { type, duration } = formData;
     dispatch(createActivity(type, Number(duration), token));
+    setFormData({ type: "", duration: "" });
   };
 
   return (

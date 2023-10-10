@@ -1,31 +1,31 @@
-import { ActivityState, ActivityActionType, ACTIVITY_SUCCESS, ACTIVITY_DELETE, ACTIVITY_PENDING, ACTIVITY_ERROR, CLEAR_ERROR } from "./types";
+import { GoalState, GoalActionType, GOAL_SUCCESS, GOAL_DELETE, GOAL_PENDING, GOAL_ERROR, CLEAR_ERROR } from "./types";
 
-const initialState: ActivityState = {
-    activities: [],
+const initialState: GoalState = {
+    goals: [],
     loading: true,
     error: null
 };
 
-export const activityReducer = (state = initialState, action: ActivityActionType): ActivityState => {
+export const goalReducer = (state = initialState, action: GoalActionType): GoalState => {
     switch (action.type) {
-        case ACTIVITY_SUCCESS:
+        case GOAL_SUCCESS:
             return {
-                activities: action.payload,
+                goals: action.payload,
                 loading: false,
                 error: null
             };
-        case ACTIVITY_DELETE:
+        case GOAL_DELETE:
             return {
                 ...state,
-                activities: state.activities.filter(({ _id }) => action.payload !== _id),
+                goals: state.goals.filter(({ _id }) => action.payload !== _id),
             };
-        case ACTIVITY_ERROR:
+        case GOAL_ERROR:
             return {
                 ...state,
                 error: action.payload,
                 loading: false
             }
-        case ACTIVITY_PENDING:
+        case GOAL_PENDING:
             return {
                 ...state,
                 loading: true

@@ -1,27 +1,27 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  ActivityCard,
-  ActivityForm,
-  fetchActivities,
-} from "src/features/activity";
+  GoalsForm,
+  GoalsCard,  
+  fetchGoals
+} from "src/features/goals";
 import { Navbar, SkeletonCard } from "src/shared/components";
 import { RootState, ThunkAppDispatch } from "src/shared/types";
 import toast from "react-hot-toast";
-import { ActivityData } from "src/features/activity/types";
+import { GoalData } from "src/features/goals/types";
 
-function Activity(): JSX.Element {
+function Goals(): JSX.Element {
   const dispatch = useDispatch<ThunkAppDispatch>();
   const token = useSelector((state: RootState) => state.auth.token);
-  const { loading, activities, error } = useSelector(
-    (state: RootState) => state.activity
+  const { loading, goals, error } = useSelector(
+    (state: RootState) => state.goal
   );
 
   useEffect(() => {
     if (loading) {
-      dispatch(fetchActivities(token!));      
+      dispatch(fetchGoals(token!));
     }
-  }, [loading, token]);
+  }, [token, loading]);
 
   useEffect(() => {
     if (error) {
@@ -34,20 +34,20 @@ function Activity(): JSX.Element {
     <>
       <Navbar />
       <main className="flex flex-col items-start gap-12 w-5/6 m-auto">
-        <h1 className="text-white font-bold text-4xl mt-4">Activities</h1>
+        <h1 className="text-white font-bold text-4xl mt-4">Your Goals</h1>
         <section>
-          <ActivityForm />
+          <GoalsForm />
         </section>
         <section className="flex flex-wrap gap-8">
           {loading ? (
             [...Array(3)].map((_, idx) => <SkeletonCard key={idx} />)
-          ) : activities?.length > 0 ? (
-            activities.map((activity) => (
-              <ActivityCard activity={activity as ActivityData} key={activity?._id} />
+          ) : goals?.length > 0 ? (
+            goals.map((goal) => (
+              <GoalsCard goal={goal as GoalData} key={goal?._id} />
             ))
           ) : (
             <p className="font-bold text-lg text-gray-100 text-center">
-              No activities added
+              No goal added
             </p>
           )}
         </section>
@@ -56,4 +56,4 @@ function Activity(): JSX.Element {
   );
 }
 
-export { Activity };
+export { Goals };

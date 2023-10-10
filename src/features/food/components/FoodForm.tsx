@@ -20,7 +20,7 @@ const FoodForm = (): JSX.Element => {
     }));
   };
 
-  const handleActivityForm = (
+  const handleFoodForm = (
     event: React.FormEvent<HTMLFormElement>
   ): void => {
     event.preventDefault();
@@ -31,7 +31,7 @@ const FoodForm = (): JSX.Element => {
   };
 
   return (
-    <form className="flex flex-wrap md:flex-nowrap items-center gap-8" onSubmit={handleActivityForm}>
+    <form className="flex flex-wrap md:flex-nowrap items-center gap-8" onSubmit={handleFoodForm}>
       <input
         type="text"
         className="bg-gray-950 w-full py-2 px-5 rounded-full border-2 border-slate-100 outline-none text text-slate-400"
