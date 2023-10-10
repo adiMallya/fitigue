@@ -16,8 +16,10 @@ function Home(): JSX.Element {
   }
 
   useEffect(() => {
-    dispatch(fetchMyDetails(token!));
-  }, [dispatch, token]);
+    if (loading) {
+      dispatch(fetchMyDetails(token!));      
+    }
+  }, [token, loading]);
 
   return (
     <>
