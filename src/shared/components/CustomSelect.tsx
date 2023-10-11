@@ -48,8 +48,8 @@ const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange
           color: 'white'
         })
       };
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const handleChange = (selectedOption: SingleValue<OptionType>, actionMeta: ActionMeta<OptionType>): void => {
+      
+      const handleChange = (selectedOption: SingleValue<OptionType>, _actionMeta: ActionMeta<OptionType>): void => {
         setSelectedValue(selectedOption);
 
         if (onChange && selectedOption) {
