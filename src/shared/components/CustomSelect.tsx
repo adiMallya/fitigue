@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Select, { StylesConfig, SingleValue, ActionMeta} from 'react-select';
+import Select, { StylesConfig, SingleValue, ActionMeta } from 'react-select';
 
 interface OptionType {
     value: string;
@@ -49,7 +49,7 @@ const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange
         })
       };
       
-      const handleChange = (selectedOption: SingleValue<OptionType>, actionMeta: ActionMeta<OptionType>): void => {
+      const handleChange = (selectedOption: SingleValue<OptionType>, _actionMeta: ActionMeta<OptionType>): void => {
         setSelectedValue(selectedOption);
 
         if (onChange && selectedOption) {
@@ -72,6 +72,7 @@ const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange
           styles={customStyles}
           placeholder={placeholder}
           value={selectedValue}
+          // @ts-ignore
           onChange={handleChange}
           isSearchable
           isDisabled={isDisabled}
