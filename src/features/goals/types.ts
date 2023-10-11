@@ -48,4 +48,4 @@ interface ClearErrorAction {
     type: typeof CLEAR_ERROR;
 }
 
-export type GoalActionType = GoalSuccessAction | GoalUpdateAction | GoalDeleteAction | GoalPendingAction | GoalErrorAction | ClearErrorAction;
+export type GoalActionType = GoalSuccessAction | GoalDeleteAction | GoalPendingAction | GoalErrorAction | ClearErrorAction;
