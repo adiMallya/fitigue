@@ -7,9 +7,10 @@ import {
   NavigateNext,
   NavigateBefore,
 } from "@mui/icons-material";
-import { ButtonLoader } from "src/shared";
+import { ButtonLoader, CustomSelect } from "src/shared";
 import { RootState } from "src/shared/types";
 import { useSignUp } from "src/features/auth";
+import { SEX } from "src/utils/constants";
 
 const SignUpPage: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
@@ -26,9 +27,10 @@ const SignUpPage: React.FC = (): JSX.Element => {
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ): void => {
     const { name, value } = event.target;
+
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: name === ('weight' || 'height' || 'age') ? Number(value) : value,
     }));
   };
 
@@ -150,9 +152,9 @@ const SignUpPage: React.FC = (): JSX.Element => {
                   type="number"
                   className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-400 focus:ring dark:focus:ring-slate-500 placeholder:opacity-75"
                   name="weight"
-                  title="Please enter body weight(in Kg)"
+                  placeholder="Weight (in Kg)"
                   onChange={handleInputChange}
-                  value={formData.weight}
+                  value={formData?.weight}
                   aria-label="Weight"
                 />
               </div>
@@ -161,7 +163,7 @@ const SignUpPage: React.FC = (): JSX.Element => {
                   type="number"
                   className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-400 focus:ring dark:focus:ring-slate-500 placeholder:opacity-75"
                   name="height"
-                  title="Please enter height(in cm)"
+                  placeholder="Height (in cm)"
                   onChange={handleInputChange}
                   value={formData.height}
                   aria-label="Height"
@@ -174,26 +176,14 @@ const SignUpPage: React.FC = (): JSX.Element => {
                   type="number"
                   className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-400 focus:ring dark:focus:ring-slate-500 placeholder:opacity-75"
                   name="age"
-                  title="Minimum age should be 5yrs"
+                  placeholder="Age (> 5yr)"
                   min={5}
                   onChange={handleInputChange}
                   value={formData.age}
                   aria-label="Age"
                 />
               </div>
-              <div className="relative dark:bg-gray-950 rounded-full h-10">
-                <select
-                  name="sex"
-                  className="w-full h-full bg-transparent py-2 px-5 rounded-full border-none outline-none text text-slate-400 focus:ring dark:focus:ring-slate-500 placeholder:opacity-75"
-                  onChange={handleInputChange}
-                  defaultValue={"Male"}
-                  aria-label="Sex"
-                >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
+              <CustomSelect options={SEX} placeholder="What is your sex?" name="sex" onChange={handleInputChange}/>
             </div>
             {error ? (
               <div className="flex items-center text-xs text-red-400">

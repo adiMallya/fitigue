@@ -35,7 +35,7 @@ interface AuthPendingAction {
 }
 
 export type AuthActionType = AuthSuccessAction | AuthErrorAction | AuthPendingAction | LogoutAction | ClearErrorAction;
-//
+
 export interface UserDataType {
     firstName: string;
     lastName: string;
@@ -44,8 +44,8 @@ export interface UserDataType {
     username: string,
     bio?: string,
     sex: string,
-    age: number,
-    height: number,
-    weight: number,
+    age: number | string,
+    height: number | string,
+    weight: number | string,
     phone?: number | string
 }
