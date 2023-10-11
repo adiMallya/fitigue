@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Select, { StylesConfig, SingleValue, ActionMeta} from 'react-select';
+import Select, { StylesConfig, SingleValue, ActionMeta } from 'react-select';
 
 interface OptionType {
     value: string;
@@ -48,7 +48,7 @@ const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange
           color: 'white'
         })
       };
-      
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const handleChange = (selectedOption: SingleValue<OptionType>, actionMeta: ActionMeta<OptionType>): void => {
         setSelectedValue(selectedOption);
 
@@ -72,6 +72,7 @@ const CustomSelect: React.FC<PropType> = ({ options, placeholder, name, onChange
           styles={customStyles}
           placeholder={placeholder}
           value={selectedValue}
+          // @ts-ignore
           onChange={handleChange}
           isSearchable
           isDisabled={isDisabled}
