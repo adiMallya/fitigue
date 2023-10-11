@@ -12,15 +12,16 @@ const useSignUp = () => {
         email: "",
         username: "",
         password: "",
-        age: 5,
+        age: "",
         sex: "",
-        height: 0,
-        weight: 0,
+        height: "",
+        weight: "",
         phone: ""
     });
 
     const handleSignUpForm = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
+        // @ts-ignore
         dispatch(signUp(formData));
     };
 
