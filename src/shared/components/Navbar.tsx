@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Dashboard, FitnessCenterOutlined, Egg, TrackChanges, Logout} from '@mui/icons-material';
+import { Dashboard, FitnessCenterOutlined, Egg, TrackChanges, Logout, GitHub } from '@mui/icons-material';
 import { ThunkAppDispatch } from 'src/shared/types';
 
 const Navbar = (): JSX.Element => {
@@ -34,6 +34,12 @@ const Navbar = (): JSX.Element => {
                         <TrackChanges/>
                         <span className="md:block hidden" aria-label='Goal'>Goal</span>
                     </Link>
+                </li>
+                <li>
+                    <a href='https://github.com/adiMallya/fitigue' className="text-white flex flex-col items-center">
+                        <GitHub/>
+                        <span className="md:block hidden" aria-label='Goal'>Github</span>
+                    </a>
                 </li>
                 <li>
                     <Link to="#" className="text-white flex flex-col items-center" onClick={handleLogout}>
